@@ -1,0 +1,365 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+	"title": "Event matchmaking chat micro-service (Node.Js) OpenApi Swagger",
+	"version": "1.0.0"
+  },
+  "paths": {
+	"/": {
+	  "get": {
+		"summary": "Service Working",
+		"responses": {
+		  "200": {
+			"description": "Successful"
+		  }
+		}
+	  }
+	},
+	"/api/chat/": {
+	  "get": {
+		"tags": [
+		  "Chat"
+		],
+		"summary": "Get Conversions",
+		"description": "Get User Conversions List",
+		"operationId": "chatGetConversions",
+		"responses": {
+		  "200": {
+			"description": "Successful",
+			"content": {
+			  "application/json": {
+				"schema": {
+				  "properties": {
+					"status": {
+					  "type": "boolean",
+					  "example": true
+					},
+					"message": {
+					  "type": "string",
+					  "example": "successful"
+					},
+					"data": {
+					  "type": "object",
+					  "example": {
+						"conversationsWith": []
+					  }
+					}
+				  },
+				  "type": "object"
+				}
+			  }
+			}
+		  }
+		}
+	  }
+	},
+	"/api/chat/conversations/{conversationId}": {
+	  "get": {
+		"tags": [
+		  "Chat"
+		],
+		"summary": "Get private Message",
+		"description": "Get Private Messaged",
+		"operationId": "chatPrivateMessage",
+		"parameters": [
+		  {
+			"name": "conversationId",
+			"in": "path",
+			"required": true,
+			"schema": {
+			  "type": "string"
+			}
+		  }
+		],
+		"responses": {
+		  "200": {
+			"description": "Successful",
+			"content": {
+			  "application/json": {
+				"schema": {
+				  "properties": {
+					"status": {
+					  "type": "boolean",
+					  "example": true
+					},
+					"message": {
+					  "type": "string",
+					  "example": "successful"
+					},
+					"data": {
+					  "type": "object",
+					  "example": {
+						"conversation": [],
+						"conversationId": ""
+					  }
+					}
+				  },
+				  "type": "object"
+				}
+			  }
+			}
+		  }
+		},
+		"security": [
+		  {
+			"bearerAuth": [
+			]
+		  }
+		]
+	  }
+	},
+	"/api/chat/leave": {
+	  "post": {
+		"tags": [
+		  "Chat"
+		],
+		"summary": "Leave a Conversation",
+		"description": "Leave a Conversation",
+		"operationId": "chatLeaveConversation",
+		"parameters": [
+		  {
+			"name": "conversationId",
+			"in": "query",
+			"required": true,
+			"schema": {
+			  "type": "string"
+			}
+		  }
+		],
+		"responses": {
+		  "200": {
+			"description": "Successful",
+			"content": {
+			  "application/json": {
+				"schema": {
+				  "properties": {
+					"status": {
+					  "type": "boolean",
+					  "example": true
+					},
+					"message": {
+					  "type": "string",
+					  "example": "Left from the Conversation."
+					}
+				  },
+				  "type": "object"
+				}
+			  }
+			}
+		  },
+		  "404": {
+			"description": "Conversation not found!",
+			"content": {
+			  "application/json": {
+				"schema": {
+				  "properties": {
+					"status": {
+					  "type": "boolean",
+					  "example": false
+					},
+					"message": {
+					  "type": "string",
+					  "example": "Conversation not found!"
+					}
+				  },
+				  "type": "object"
+				}
+			  }
+			}
+		  }
+		},
+		"security": [
+		  {
+			"bearerAuth": [
+			]
+		  }
+		]
+	  }
+	},
+	"/api/chat/newMessage": {
+	  "post": {
+		"tags": [
+		  "Chat"
+		],
+		"summary": "Send New Message",
+		"description": "It is an alternative for Socket.io for sending message over http protocol",
+		"operationId": "chatNewMessage",
+		"parameters": [
+		  {
+			"name": "message",
+			"in": "query",
+			"required": true,
+			"schema": {
+			  "type": "string"
+			}
+		  },
+		  {
+			"name": "conversationId",
+			"in": "query",
+			"required": true,
+			"schema": {
+			  "type": "string"
+			}
+		  }
+		],
+		"responses": {
+		  "200": {
+			"description": "Successful",
+			"content": {
+			  "application/json": {
+				"schema": {
+				  "properties": {
+					"status": {
+					  "type": "boolean",
+					  "example": true
+					},
+					"message": {
+					  "type": "string",
+					  "example": "Message sent."
+					}
+				  },
+				  "type": "object"
+				}
+			  }
+			}
+		  },
+		  "500": {
+			"description": "Conversation not found!",
+			"content": {
+			  "application/json": {
+				"schema": {
+				  "properties": {
+					"status": {
+					  "type": "boolean",
+					  "example": false
+					},
+					"message": {
+					  "type": "string",
+					  "example": "Bad Request!"
+					}
+				  },
+				  "type": "object"
+				}
+			  }
+			}
+		  },
+		  "404": {
+			"description": "Conversation not found!",
+			"content": {
+			  "application/json": {
+				"schema": {
+				  "properties": {
+					"status": {
+					  "type": "boolean",
+					  "example": false
+					},
+					"message": {
+					  "type": "string",
+					  "example": "Conversation not found!"
+					}
+				  },
+				  "type": "object"
+				}
+			  }
+			}
+		  }
+		},
+		"security": [
+		  {
+			"bearerAuth": [
+			]
+		  }
+		]
+	  }
+	}
+  },
+  "components": {
+	"schemas": {
+	  "Conversation": {
+		"properties": {
+		  "participants": {
+			"type": "array",
+			"example": []
+		  },
+		  "count": {
+			"type": "integer"
+		  },
+		  "channelName": {
+			"type": "string"
+		  }
+		},
+		"type": "object",
+		"xml": {
+		  "name": "conversation"
+		}
+	  },
+	  "Message": {
+		"properties": {
+		  "conversationId": {
+			"description": "Conversation Id",
+			"type": "string",
+			"example": ""
+		  },
+		  "body": {
+			"description": "Body of message",
+			"type": "string",
+			"example": "Hi"
+		  },
+		  "is_seen": {
+			"type": "integer",
+			"example": 1
+		  },
+		  "author": {
+			"type": "array",
+			"example": [
+			  {
+				"kind": "User",
+				"item": ""
+			  }
+			]
+		  }
+		},
+		"type": "object",
+		"xml": {
+		  "name": "message"
+		}
+	  },
+	  "User": {
+		"properties": {
+		  "user_id": {
+			"description": "id of user",
+			"type": "integer",
+			"example": "1"
+		  },
+		  "name": {
+			"type": "string",
+			"example": "Doe name"
+		  }
+		},
+		"type": "object",
+		"xml": {
+		  "name": "User"
+		}
+	  }
+	},
+	"securitySchemes": {
+	  "bearerAuth": {
+		"type": "http",
+		"name": "bearerAuth",
+		"in": "header",
+		"bearerFormat": "JWT",
+		"scheme": "bearer"
+	  }
+	}
+  },
+  "security": {
+	"0": [
+	],
+	"bearer_token": {
+	  "type": "apiKey",
+	  "description": "Enter token in format (Bearer <token>)",
+	  "name": "Authorization",
+	  "in": "header"
+	}
+  }
+}
