@@ -7,7 +7,7 @@
 ## About
 > Supporting the mission of Ideas Worth spreading, TEDxTehran are local, independently organized events licensed by TED that brings people living in Tehran together to share a TED-like experience. We bring thought leaders, innovators and doers, from across different disciplines, to share their ideas and stories in the heart of Tehran. In the spirit of TED’s “Ideas Worth Spreading” we strive to bring "Make Iran Famous for its Ideas".
 
-This is the repository hosting the code for **Mathmaking chat based on Node.js & MongoDB**, free for use by anyone.
+This is the repository hosting the code for the **Matchmaking chat service based on Node.js & MongoDB**, free for use by anyone.
 
 ## Requirements
 - Docker (version 19.03.0 or later)
@@ -18,10 +18,9 @@ This is the repository hosting the code for **Mathmaking chat based on Node.js &
 `git clone git@github.com:TEDxTehran-Team/event-app-chat-service.git`
 - Copy .env.example to .env
 - Add secret key and other data to the env files
-- Run these commands:
+- Run this command:
 ```shell
 docker-compose up
-docker-compose exec app python manage.py migrate
 ```
 
 ## Documentation
@@ -32,6 +31,6 @@ After deploying, you can see the docs at here: http://localhost:3030/api-docs
 Feel free to submit any pull request that improves this project in any possible way. Before undertaking a major change, consider opening an issue for some discussion.
 
 ## Other Open-Source Projects
-- [App core backend](https://github.com/TEDxTehran-Team/event-app-core.git)
+- [App core backend](https://github.com/TEDxTehran-Team/event-app-core)
 - [iOS application](https://github.com/TEDxTehran-Team/event-app-ios)
-- [Android application](https://github.com/TEDxTehran-Team/event-app-andoid)
+- [Android application](https://github.com/TEDxTehran-Team/event-app-android)
